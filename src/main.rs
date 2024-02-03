@@ -85,21 +85,21 @@ async fn main() {
                 }
             });
             for (i, item) in res.iter().enumerate() {
-                if i % 10 == 0 {
+                if i % 20 == 0 {
                     tracing::debug!("{}", "");
                     tracing::debug!(
                         "{:^5} | {:^7} | {:^24} | {:^19} | {:^19}",
-                        "",
-                        "ORDER",
-                        "RECORD",
+                        "#",
+                        "TYPE",
+                        "TIMESTAMP",
                         "GOLD",
                         "GEMS"
                     );
                     tracing::debug!(
                         "{:^5} | {:^7} | {:^24} | {:^7} : {:^9} | {:^7} : {:^9}",
-                        "#",
-                        "TYPE",
-                        "TIMESTAMP",
+                        "",
+                        "",
+                        "",
                         "QTY",
                         "BESTPRICE",
                         "QTY",
@@ -122,7 +122,7 @@ async fn main() {
                     _ => "other",
                 };
                 tracing::debug!(
-                    "{:^5} | {:^7} | {:^24} | {:>6} : {:<10} | {:<6} : {:<10}",
+                    "{:^5} | {:^7} | {:^24} | {:>7} : {:<9} | {:>7} : {:<9}",
                     i,
                     type_string,
                     item.created_at,
