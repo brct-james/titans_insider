@@ -1,0 +1,1893 @@
+{
+  "info": {
+    "title": "Smarty Titans API",
+    "version": "1.2.0"
+  },
+  "openapi": "3.0.3",
+  "paths": {
+    "/api/arbitrage/all": {
+      "get": {
+        "operationId": "ArbitrageSwagger_get_/all",
+        "tags": ["Arbitrage"],
+        "summary": "Get all arbitrage data",
+        "description": "API endpoint for https://smartytitans.com/live/arbitrage",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IBasicResponse_ItemArbitrage___"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/historical/single": {
+      "post": {
+        "operationId": "HistoricalSwagger_post_/single",
+        "tags": ["Historical"],
+        "summary": "Get historical data for single item",
+        "description": "API endpoint for https://smartytitans.com/historical-data",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "tType": {
+                    "type": "string"
+                  },
+                  "uid": {
+                    "type": "string"
+                  },
+                  "tag1": {
+                    "type": "string"
+                  },
+                  "rangeDates": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "format": "date-time"
+                    }
+                  }
+                },
+                "additionalProperties": false,
+                "required": ["rangeDates", "tType", "tag1", "uid"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IBasicResponse_Item___"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/info/player/{id}": {
+      "get": {
+        "operationId": "InfoSwagger_get_/player/{id}",
+        "tags": ["Info"],
+        "summary": "Get Player Info by Id",
+        "description": "API endpoint for https://smartytitans.com/player/:id",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IBasicResponse_IFetchUserResult_"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/info/player/{id}/investments": {
+      "get": {
+        "operationId": "InfoSwagger_get_/player/{id}/investments",
+        "tags": ["Info"],
+        "summary": "Get Player Investments by Id",
+        "description": "API endpoint for https://smartytitans.com/player/:id",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IBasicResponse_IFetchUserInvestItem___"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/info/city/{id}": {
+      "get": {
+        "operationId": "InfoSwagger_get_/city/{id}",
+        "tags": ["Info"],
+        "summary": "Get Guild/City Info by Id",
+        "description": "API endpoint for https://smartytitans.com/guild/:id",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IBasicResponse_IFetchCityResult_"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/info/city/{id}/investments": {
+      "get": {
+        "operationId": "InfoSwagger_get_/city/{id}/investments",
+        "tags": ["Info"],
+        "summary": "Get Guild/City Investments by Id",
+        "description": "API endpoint for https://smartytitans.com/guild/:id",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IBasicResponse_IFetchCityItem___"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/item/last/all": {
+      "get": {
+        "operationId": "ItemSwagger_get_/last/all",
+        "tags": ["Item"],
+        "summary": "Get last data for all items in the Market",
+        "description": "API endpoint for https://smartytitans.com/live/research",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IBasicResponse_ItemLast___"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/assets/gameData/items.json": {
+      "get": {
+        "operationId": "ItemsInfoJsonSwagger_get_/assets/gameData/items.json",
+        "tags": ["Items-Info"],
+        "summary": "Item details JSON",
+        "description": "API endpoint for https://smartytitans.com/assets/gameData/items.json",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "$ref": "#/components/schemas/IDefaultItemInfo"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/assets/gameData/texts_{country}.json": {
+      "get": {
+        "operationId": "ItemsTranslationsSwagger_get_/assets/gameData/texts_{country}.json",
+        "tags": ["Translations"],
+        "summary": "Item translations JSON",
+        "description": "API endpoint for https://smartytitans.com/assets/gameData/texts_en.json",
+        "parameters": [
+          {
+            "name": "country",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "IBasicResponse_ItemArbitrage___": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ItemArbitrage"
+            }
+          },
+          "status": {
+            "$ref": "#/components/schemas/ResponseStatusMessage"
+          },
+          "count": {
+            "type": "number"
+          },
+          "errorMessage": {}
+        },
+        "additionalProperties": false
+      },
+      "ItemArbitrage": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "offerId": {
+            "type": "number"
+          },
+          "requestId": {
+            "type": "number"
+          },
+          "tType": {
+            "type": "string"
+          },
+          "uid": {
+            "type": "string"
+          },
+          "tag1": {
+            "type": "string",
+            "nullable": true
+          },
+          "tag2": {
+            "type": "string",
+            "nullable": true
+          },
+          "tag3": {
+            "type": "string",
+            "nullable": true
+          },
+          "offerGoldQty": {
+            "type": "number"
+          },
+          "offerGemsQty": {
+            "type": "number"
+          },
+          "requestGoldQty": {
+            "type": "number"
+          },
+          "requestGemsQty": {
+            "type": "number"
+          },
+          "created": {
+            "type": "string",
+            "nullable": true
+          },
+          "tier": {
+            "type": "number",
+            "nullable": true
+          },
+          "order": {
+            "type": "number",
+            "nullable": true
+          },
+          "cityId": {
+            "type": "number",
+            "nullable": true
+          },
+          "offerGoldPrice": {
+            "type": "number"
+          },
+          "offerGemsPrice": {
+            "type": "number"
+          },
+          "requestGoldPrice": {
+            "type": "number"
+          },
+          "requestGemsPrice": {
+            "type": "number"
+          },
+          "requestCycleLast": {
+            "type": "number"
+          },
+          "createdAt": {
+            "type": "string"
+          },
+          "updatedAt": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "cityId",
+          "created",
+          "createdAt",
+          "id",
+          "offerGemsPrice",
+          "offerGemsQty",
+          "offerGoldPrice",
+          "offerGoldQty",
+          "offerId",
+          "order",
+          "requestCycleLast",
+          "requestGemsPrice",
+          "requestGemsQty",
+          "requestGoldPrice",
+          "requestGoldQty",
+          "requestId",
+          "tType",
+          "tag1",
+          "tag2",
+          "tag3",
+          "tier",
+          "uid",
+          "updatedAt"
+        ]
+      },
+      "ResponseStatusMessage": {
+        "enum": ["Error", "Success"],
+        "type": "string"
+      },
+      "IBasicResponse_Item___": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Item"
+            }
+          },
+          "status": {
+            "$ref": "#/components/schemas/ResponseStatusMessage"
+          },
+          "count": {
+            "type": "number"
+          },
+          "errorMessage": {}
+        },
+        "additionalProperties": false
+      },
+      "Item": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "tType": {
+            "type": "string"
+          },
+          "uid": {
+            "type": "string"
+          },
+          "tag1": {
+            "type": "string",
+            "nullable": true
+          },
+          "tag2": {
+            "type": "string",
+            "nullable": true
+          },
+          "tag3": {
+            "type": "string",
+            "nullable": true
+          },
+          "goldQty": {
+            "type": "number"
+          },
+          "gemsQty": {
+            "type": "number"
+          },
+          "created": {
+            "type": "string",
+            "nullable": true
+          },
+          "tier": {
+            "type": "number",
+            "nullable": true
+          },
+          "order": {
+            "type": "number",
+            "nullable": true
+          },
+          "cityId": {
+            "type": "number",
+            "nullable": true
+          },
+          "goldPrice": {
+            "type": "number",
+            "nullable": true
+          },
+          "gemsPrice": {
+            "type": "number",
+            "nullable": true
+          },
+          "requestCycle": {
+            "type": "number"
+          },
+          "createdAt": {
+            "type": "string"
+          },
+          "updatedAt": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "cityId",
+          "created",
+          "createdAt",
+          "gemsPrice",
+          "gemsQty",
+          "goldPrice",
+          "goldQty",
+          "id",
+          "order",
+          "requestCycle",
+          "tType",
+          "tag1",
+          "tag2",
+          "tag3",
+          "tier",
+          "uid",
+          "updatedAt"
+        ]
+      },
+      "IHistoricalRequestBody": {
+        "type": "object",
+        "properties": {
+          "tType": {
+            "type": "string"
+          },
+          "uid": {
+            "type": "string"
+          },
+          "tag1": {
+            "type": "string"
+          },
+          "rangeDates": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "date-time"
+            }
+          }
+        },
+        "additionalProperties": false,
+        "required": ["rangeDates", "tType", "tag1", "uid"]
+      },
+      "IBasicResponse_IFetchUserResult_": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/IFetchUserResult"
+          },
+          "status": {
+            "$ref": "#/components/schemas/ResponseStatusMessage"
+          },
+          "count": {
+            "type": "number"
+          },
+          "errorMessage": {}
+        },
+        "additionalProperties": false
+      },
+      "IFetchUserResult": {
+        "type": "object",
+        "properties": {
+          "_id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "level": {
+            "type": "number"
+          },
+          "city": {
+            "type": "string"
+          },
+          "cityName": {
+            "type": "string"
+          },
+          "cityLevel": {
+            "type": "number"
+          },
+          "stats": {
+            "$ref": "#/components/schemas/Stats"
+          },
+          "rankGld": {
+            "type": "number"
+          },
+          "rankStrAdv": {
+            "type": "number"
+          }
+        },
+        "additionalProperties": false,
+        "required": ["_id", "city", "cityLevel", "cityName", "level", "name", "rankGld", "rankStrAdv", "stats"]
+      },
+      "Stats": {
+        "type": "object",
+        "properties": {
+          "lvl": {
+            "type": "number"
+          },
+          "bp": {
+            "type": "number"
+          },
+          "gld": {
+            "type": "number"
+          },
+          "sll": {
+            "type": "number"
+          },
+          "buy": {
+            "type": "number"
+          },
+          "cft": {
+            "type": "number"
+          },
+          "ecft": {
+            "type": "number"
+          },
+          "qst": {
+            "type": "number"
+          },
+          "qsts": {
+            "$ref": "#/components/schemas/Qsts"
+          },
+          "boss": {
+            "$ref": "#/components/schemas/Boss"
+          },
+          "prest": {
+            "type": "number"
+          },
+          "score": {
+            "type": "number"
+          },
+          "help": {
+            "type": "number"
+          },
+          "invst": {
+            "type": "number"
+          },
+          "trd": {
+            "type": "number"
+          },
+          "clsTypLvls": {
+            "$ref": "#/components/schemas/ClsTypLvls"
+          },
+          "itmTypLvls": {
+            "$ref": "#/components/schemas/ItmTypLvls"
+          },
+          "qstLvls": {
+            "$ref": "#/components/schemas/QstLvls"
+          },
+          "activity": {
+            "type": "number"
+          },
+          "chests": {
+            "$ref": "#/components/schemas/Chests"
+          },
+          "bigSale": {
+            "type": "number"
+          },
+          "tutorial": {
+            "type": "number"
+          },
+          "argon": {
+            "type": "number"
+          },
+          "sia": {
+            "type": "number"
+          },
+          "yami": {
+            "type": "number"
+          },
+          "lilu": {
+            "type": "number"
+          },
+          "rudo": {
+            "type": "number"
+          },
+          "polonia": {
+            "type": "number"
+          },
+          "donovan": {
+            "type": "number"
+          },
+          "hemma": {
+            "type": "number"
+          },
+          "hhired": {
+            "type": "number"
+          },
+          "alevel": {
+            "type": "number"
+          },
+          "whired": {
+            "type": "number"
+          },
+          "flevel": {
+            "type": "number"
+          },
+          "energy": {
+            "type": "number"
+          },
+          "dpurchased": {
+            "type": "number"
+          },
+          "cres": {
+            "type": "number"
+          },
+          "ures": {
+            "type": "number"
+          },
+          "rres": {
+            "type": "number"
+          },
+          "loot": {
+            "type": "number"
+          },
+          "bosses": {
+            "type": "number"
+          },
+          "copened": {
+            "type": "number"
+          },
+          "research": {
+            "type": "number"
+          },
+          "ascend": {
+            "type": "number"
+          },
+          "ascendUpg": {
+            "type": "number"
+          },
+          "master": {
+            "type": "number"
+          },
+          "expansions": {
+            "type": "number"
+          },
+          "bsmtExpansions": {
+            "type": "number"
+          },
+          "damage": {
+            "type": "number"
+          },
+          "jackslot": {
+            "type": "number"
+          },
+          "echt": {
+            "type": "number"
+          },
+          "echtTwin": {
+            "type": "number"
+          },
+          "echtLedg": {
+            "type": "number"
+          },
+          "tunlocked": {
+            "type": "number"
+          },
+          "bounty": {
+            "type": "number"
+          },
+          "strAdvId": {
+            "type": "number"
+          },
+          "strAdvPow": {
+            "type": "number"
+          },
+          "strAdvClass": {
+            "type": "string"
+          },
+          "gspent": {
+            "type": "number"
+          },
+          "fuseUncommon": {
+            "type": "number"
+          },
+          "fuseFlawless": {
+            "type": "number"
+          },
+          "fuseEpic": {
+            "type": "number"
+          },
+          "fuseLegend": {
+            "type": "number"
+          },
+          "masterpiece": {
+            "type": "number"
+          },
+          "fullMoon": {
+            "type": "number"
+          },
+          "transmuter": {
+            "type": "number"
+          },
+          "lg": {
+            "type": "number"
+          },
+          "collection": {
+            "type": "number"
+          },
+          "bookEntry": {
+            "type": "number"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "activity",
+          "alevel",
+          "argon",
+          "ascend",
+          "ascendUpg",
+          "bigSale",
+          "bookEntry",
+          "boss",
+          "bosses",
+          "bounty",
+          "bp",
+          "bsmtExpansions",
+          "buy",
+          "cft",
+          "chests",
+          "clsTypLvls",
+          "collection",
+          "copened",
+          "cres",
+          "damage",
+          "donovan",
+          "dpurchased",
+          "ecft",
+          "echt",
+          "echtLedg",
+          "echtTwin",
+          "energy",
+          "expansions",
+          "flevel",
+          "fullMoon",
+          "fuseEpic",
+          "fuseFlawless",
+          "fuseLegend",
+          "fuseUncommon",
+          "gld",
+          "gspent",
+          "help",
+          "hemma",
+          "hhired",
+          "invst",
+          "itmTypLvls",
+          "jackslot",
+          "lg",
+          "lilu",
+          "loot",
+          "lvl",
+          "master",
+          "masterpiece",
+          "polonia",
+          "prest",
+          "qst",
+          "qstLvls",
+          "qsts",
+          "research",
+          "rres",
+          "rudo",
+          "score",
+          "sia",
+          "sll",
+          "strAdvClass",
+          "strAdvId",
+          "strAdvPow",
+          "transmuter",
+          "trd",
+          "tunlocked",
+          "tutorial",
+          "ures",
+          "whired",
+          "yami"
+        ]
+      },
+      "Qsts": {
+        "type": "object",
+        "properties": {
+          "forest": {
+            "type": "number"
+          },
+          "grotto": {
+            "type": "number"
+          },
+          "swamp": {
+            "type": "number"
+          },
+          "titantower": {
+            "type": "number"
+          },
+          "goldcity": {
+            "type": "number"
+          },
+          "desert": {
+            "type": "number"
+          },
+          "pyramid": {
+            "type": "number"
+          }
+        },
+        "additionalProperties": false,
+        "required": ["desert", "forest", "goldcity", "grotto", "pyramid", "swamp", "titantower"]
+      },
+      "Boss": {
+        "type": "object",
+        "properties": {
+          "forest": {
+            "type": "number"
+          },
+          "grotto": {
+            "type": "number"
+          },
+          "titantower": {
+            "type": "number"
+          },
+          "goldcity": {
+            "type": "number"
+          },
+          "swamp": {
+            "type": "number"
+          },
+          "desert": {
+            "type": "number"
+          },
+          "pyramid": {
+            "type": "number"
+          }
+        },
+        "additionalProperties": false,
+        "required": ["desert", "forest", "goldcity", "grotto", "pyramid", "swamp", "titantower"]
+      },
+      "ClsTypLvls": {
+        "type": "object",
+        "properties": {
+          "Rogue": {
+            "type": "number"
+          },
+          "Spellcaster": {
+            "type": "number"
+          },
+          "Fighter": {
+            "type": "number"
+          }
+        },
+        "additionalProperties": false,
+        "required": ["Fighter", "Rogue", "Spellcaster"]
+      },
+      "ItmTypLvls": {
+        "type": "object",
+        "properties": {
+          "ah": {
+            "type": "number"
+          },
+          "gl": {
+            "type": "number"
+          },
+          "al": {
+            "type": "number"
+          },
+          "bl": {
+            "type": "number"
+          },
+          "wd": {
+            "type": "number"
+          },
+          "ws": {
+            "type": "number"
+          },
+          "bh": {
+            "type": "number"
+          },
+          "wm": {
+            "type": "number"
+          },
+          "wt": {
+            "type": "number"
+          },
+          "hh": {
+            "type": "number"
+          },
+          "wa": {
+            "type": "number"
+          },
+          "am": {
+            "type": "number"
+          },
+          "wb": {
+            "type": "number"
+          },
+          "xs": {
+            "type": "number"
+          },
+          "gh": {
+            "type": "number"
+          },
+          "uh": {
+            "type": "number"
+          },
+          "us": {
+            "type": "number"
+          },
+          "z": {
+            "type": "number"
+          },
+          "up": {
+            "type": "number"
+          },
+          "hm": {
+            "type": "number"
+          },
+          "hl": {
+            "type": "number"
+          },
+          "wc": {
+            "type": "number"
+          },
+          "wg": {
+            "type": "number"
+          },
+          "wp": {
+            "type": "number"
+          },
+          "xr": {
+            "type": "number"
+          },
+          "xa": {
+            "type": "number"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "ah",
+          "al",
+          "am",
+          "bh",
+          "bl",
+          "gh",
+          "gl",
+          "hh",
+          "hl",
+          "hm",
+          "uh",
+          "up",
+          "us",
+          "wa",
+          "wb",
+          "wc",
+          "wd",
+          "wg",
+          "wm",
+          "wp",
+          "ws",
+          "wt",
+          "xa",
+          "xr",
+          "xs",
+          "z"
+        ]
+      },
+      "QstLvls": {
+        "type": "object",
+        "properties": {
+          "forest": {
+            "type": "number"
+          },
+          "grotto": {
+            "type": "number"
+          },
+          "swamp": {
+            "type": "number"
+          },
+          "desert": {
+            "type": "number"
+          },
+          "pyramid": {
+            "type": "number"
+          }
+        },
+        "additionalProperties": false,
+        "required": ["desert", "forest", "grotto", "pyramid", "swamp"]
+      },
+      "Chests": {
+        "type": "object",
+        "properties": {
+          "chest_forest": {
+            "type": "number"
+          },
+          "chest_grotto": {
+            "type": "number"
+          },
+          "chest_swamp": {
+            "type": "number"
+          },
+          "chest_desert": {
+            "type": "number"
+          },
+          "chest_pyramid": {
+            "type": "number"
+          },
+          "chest_ruins": {
+            "type": "number"
+          },
+          "chest_castle": {
+            "type": "number"
+          },
+          "chest_temple": {
+            "type": "number"
+          },
+          "chest_peak": {
+            "type": "number"
+          },
+          "chest_volcano": {
+            "type": "number"
+          },
+          "chest_rift": {
+            "type": "number"
+          },
+          "chest_goldcity": {
+            "type": "number"
+          },
+          "chest_goldcity2": {
+            "type": "number"
+          },
+          "chest_goldcity3": {
+            "type": "number"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "chest_castle",
+          "chest_desert",
+          "chest_forest",
+          "chest_goldcity",
+          "chest_goldcity2",
+          "chest_goldcity3",
+          "chest_grotto",
+          "chest_peak",
+          "chest_pyramid",
+          "chest_rift",
+          "chest_ruins",
+          "chest_swamp",
+          "chest_temple",
+          "chest_volcano"
+        ]
+      },
+      "IBasicResponse_IFetchUserInvestItem___": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/IFetchUserInvestItem"
+            }
+          },
+          "status": {
+            "$ref": "#/components/schemas/ResponseStatusMessage"
+          },
+          "count": {
+            "type": "number"
+          },
+          "errorMessage": {}
+        },
+        "additionalProperties": false
+      },
+      "IFetchUserInvestItem": {
+        "type": "object",
+        "properties": {
+          "ticks": {
+            "type": "number"
+          },
+          "uid": {
+            "type": "string"
+          },
+          "value": {
+            "type": "number"
+          },
+          "_id": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false,
+        "required": ["_id", "ticks", "uid", "value"]
+      },
+      "IBasicResponse_IFetchCityResult_": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/IFetchCityResult"
+          },
+          "status": {
+            "$ref": "#/components/schemas/ResponseStatusMessage"
+          },
+          "count": {
+            "type": "number"
+          },
+          "errorMessage": {}
+        },
+        "additionalProperties": false
+      },
+      "IFetchCityResult": {
+        "type": "object",
+        "properties": {
+          "_id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "popLimit": {
+            "type": "number"
+          },
+          "netwt": {
+            "type": "number"
+          },
+          "rankNetwt": {
+            "type": "number"
+          },
+          "activity": {
+            "type": "number"
+          },
+          "quEvId": {},
+          "steamChatGroupId": {},
+          "members": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/IFetchCityMemberResult"
+            }
+          },
+          "buildings": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Building"
+            }
+          },
+          "settings": {
+            "$ref": "#/components/schemas/Settings"
+          },
+          "board": {
+            "$ref": "#/components/schemas/Board"
+          },
+          "upgrades": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "number"
+            }
+          },
+          "boosts": {
+            "type": "array",
+            "items": {}
+          }
+        },
+        "additionalProperties": false,
+        "required": ["_id", "activity", "board", "boosts", "buildings", "members", "name", "netwt", "popLimit", "rankNetwt", "settings", "upgrades"]
+      },
+      "IFetchCityMemberResult": {
+        "type": "object",
+        "properties": {
+          "_id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "level": {
+            "type": "number"
+          },
+          "rank": {
+            "type": "number"
+          },
+          "joined": {},
+          "lot": {
+            "type": "number"
+          },
+          "score": {
+            "type": "number"
+          },
+          "quEvComp": {
+            "type": "number"
+          },
+          "quEvId": {
+            "type": "string"
+          },
+          "activity": {
+            "type": "number"
+          },
+          "gld": {
+            "type": "number"
+          },
+          "invst": {
+            "type": "number"
+          },
+          "help": {
+            "type": "number"
+          },
+          "prest": {
+            "type": "number"
+          },
+          "bounty": {
+            "type": "number"
+          },
+          "master": {
+            "type": "number"
+          },
+          "ascendUpg": {
+            "type": "number"
+          },
+          "collection": {
+            "type": "number"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "_id",
+          "activity",
+          "ascendUpg",
+          "bounty",
+          "collection",
+          "gld",
+          "help",
+          "invst",
+          "joined",
+          "level",
+          "lot",
+          "master",
+          "name",
+          "prest",
+          "quEvComp",
+          "quEvId",
+          "rank",
+          "score"
+        ]
+      },
+      "Building": {
+        "type": "object",
+        "properties": {
+          "uid": {
+            "type": "string"
+          },
+          "level": {
+            "type": "number"
+          },
+          "minLevel": {
+            "type": "number"
+          },
+          "nextAt": {
+            "type": "number"
+          }
+        },
+        "additionalProperties": false,
+        "required": ["level", "minLevel", "nextAt", "uid"]
+      },
+      "Settings": {
+        "type": "object",
+        "properties": {
+          "join": {
+            "type": "number"
+          },
+          "minLevel": {
+            "type": "number"
+          },
+          "lang": {
+            "type": "string"
+          },
+          "pick": {
+            "type": "string"
+          },
+          "pickNext": {
+            "type": "number"
+          },
+          "message": {}
+        },
+        "additionalProperties": false,
+        "required": ["join", "lang", "minLevel", "pick", "pickNext"]
+      },
+      "Board": {
+        "type": "object",
+        "properties": {
+          "bounties": {
+            "type": "array",
+            "items": {}
+          },
+          "prevContributors": {
+            "type": "array",
+            "items": {}
+          },
+          "currency": {
+            "type": "number"
+          },
+          "endsAt": {
+            "type": "number"
+          },
+          "nextUpdateAt": {
+            "type": "number"
+          },
+          "nextUpdateIn": {
+            "type": "number"
+          },
+          "endsIn": {
+            "type": "number"
+          }
+        },
+        "additionalProperties": false,
+        "required": ["bounties", "currency", "endsAt", "endsIn", "nextUpdateAt", "nextUpdateIn", "prevContributors"]
+      },
+      "IBasicResponse_IFetchCityItem___": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/IFetchCityItem"
+            }
+          },
+          "status": {
+            "$ref": "#/components/schemas/ResponseStatusMessage"
+          },
+          "count": {
+            "type": "number"
+          },
+          "errorMessage": {}
+        },
+        "additionalProperties": false
+      },
+      "IFetchCityItem": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string"
+          },
+          "id": {
+            "type": "string"
+          },
+          "uid": {
+            "type": "string"
+          },
+          "investors": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Investor"
+            }
+          },
+          "value": {
+            "type": "number"
+          },
+          "ticks": {
+            "type": "number"
+          },
+          "level": {
+            "type": "number"
+          }
+        },
+        "additionalProperties": false,
+        "required": ["id", "investors", "type", "uid"]
+      },
+      "Investor": {
+        "type": "object",
+        "properties": {
+          "_id": {
+            "type": "string"
+          },
+          "value": {
+            "type": "number"
+          },
+          "ticks": {
+            "type": "number"
+          },
+          "name": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false,
+        "required": ["_id", "ticks", "value"]
+      },
+      "IBasicResponse_ItemLast___": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ItemLast"
+            }
+          },
+          "status": {
+            "$ref": "#/components/schemas/ResponseStatusMessage"
+          },
+          "count": {
+            "type": "number"
+          },
+          "errorMessage": {}
+        },
+        "additionalProperties": false
+      },
+      "ItemLast": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "tType": {
+            "type": "string"
+          },
+          "uid": {
+            "type": "string"
+          },
+          "tag1": {
+            "type": "string",
+            "nullable": true
+          },
+          "tag2": {
+            "type": "string",
+            "nullable": true
+          },
+          "tag3": {
+            "type": "string",
+            "nullable": true
+          },
+          "goldQty": {
+            "type": "number"
+          },
+          "gemsQty": {
+            "type": "number"
+          },
+          "created": {
+            "type": "string",
+            "nullable": true
+          },
+          "tier": {
+            "type": "number",
+            "nullable": true
+          },
+          "order": {
+            "type": "number",
+            "nullable": true
+          },
+          "cityId": {
+            "type": "number",
+            "nullable": true
+          },
+          "goldPrice": {
+            "type": "number",
+            "nullable": true
+          },
+          "gemsPrice": {
+            "type": "number",
+            "nullable": true
+          },
+          "requestCycleLast": {
+            "type": "number"
+          },
+          "createdAt": {
+            "type": "string"
+          },
+          "updatedAt": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "cityId",
+          "created",
+          "createdAt",
+          "gemsPrice",
+          "gemsQty",
+          "goldPrice",
+          "goldQty",
+          "id",
+          "order",
+          "requestCycleLast",
+          "tType",
+          "tag1",
+          "tag2",
+          "tag3",
+          "tier",
+          "uid",
+          "updatedAt"
+        ]
+      },
+      "IDefaultItemInfo": {
+        "type": "object",
+        "properties": {
+          "uid": {
+            "type": "string"
+          },
+          "level": {
+            "type": "number"
+          },
+          "type": {
+            "type": "string"
+          },
+          "xp": {
+            "type": "number"
+          },
+          "craftXp": {
+            "type": "number"
+          },
+          "value": {
+            "type": "number"
+          },
+          "tradeMinMaxValue": {
+            "type": "string"
+          },
+          "favor": {
+            "type": "number"
+          },
+          "time": {
+            "type": "number"
+          },
+          "atk": {
+            "type": "number"
+          },
+          "def": {
+            "type": "number"
+          },
+          "hp": {
+            "type": "number"
+          },
+          "eva": {
+            "type": "string"
+          },
+          "crit": {
+            "type": "string"
+          },
+          "excl": {
+            "type": "string"
+          },
+          "tier": {
+            "type": "number",
+            "nullable": true
+          },
+          "combo": {
+            "type": "number"
+          },
+          "worker1": {
+            "type": "string"
+          },
+          "worker2": {
+            "type": "string"
+          },
+          "worker3": {
+            "type": "string"
+          },
+          "w1BuildingReq": {
+            "type": "number"
+          },
+          "w2BuildingReq": {
+            "type": "number"
+          },
+          "w3BuildingReq": {
+            "type": "number"
+          },
+          "resource1": {
+            "type": "string"
+          },
+          "r1Qty": {
+            "type": "number"
+          },
+          "resource2": {
+            "type": "string"
+          },
+          "r2Qty": {
+            "type": "number"
+          },
+          "resource3": {
+            "type": "string"
+          },
+          "r3Qty": {
+            "type": "number"
+          },
+          "component1": {
+            "type": "string"
+          },
+          "c1Qty": {
+            "type": "number"
+          },
+          "c1Tags": {
+            "type": "string"
+          },
+          "component2": {
+            "type": "string"
+          },
+          "c2Qty": {
+            "type": "number"
+          },
+          "c2Tags": {
+            "type": "string"
+          },
+          "u1Req": {
+            "type": "number"
+          },
+          "u2Req": {
+            "type": "number"
+          },
+          "u3Req": {
+            "type": "number"
+          },
+          "u4Req": {
+            "type": "number"
+          },
+          "u5Req": {
+            "type": "number"
+          },
+          "upgrade1": {
+            "type": "string"
+          },
+          "upgrade2": {
+            "type": "string"
+          },
+          "upgrade3": {
+            "type": "string"
+          },
+          "upgrade4": {
+            "type": "string"
+          },
+          "upgrade5": {
+            "type": "string"
+          },
+          "upgradeBonus": {
+            "type": "number"
+          },
+          "supgrade1": {
+            "type": "string"
+          },
+          "supgrade2": {
+            "type": "string"
+          },
+          "supgrade3": {
+            "type": "string"
+          },
+          "su1Cost": {
+            "type": "number"
+          },
+          "su2Cost": {
+            "type": "number"
+          },
+          "su3Cost": {
+            "type": "number"
+          },
+          "restrict": {
+            "nullable": true
+          },
+          "reqTags": {
+            "nullable": true
+          },
+          "tagIndex": {
+            "type": "number"
+          },
+          "elements": {
+            "type": "string"
+          },
+          "skill": {
+            "type": "string"
+          },
+          "lTag2": {
+            "type": "string"
+          },
+          "lTag3": {
+            "type": "string"
+          },
+          "elementAffinity": {
+            "type": "string"
+          },
+          "spiritAffinity": {
+            "type": "string"
+          },
+          "tag": {
+            "type": "string"
+          },
+          "discount": {
+            "type": "number"
+          },
+          "surcharge": {
+            "type": "number"
+          },
+          "suggest": {
+            "type": "number"
+          },
+          "speedup": {
+            "type": "number"
+          },
+          "buyAnimIdOverride": {
+            "type": "number"
+          },
+          "questAnimIdOverride": {
+            "type": "number"
+          },
+          "slotOverride": {
+            "type": "string"
+          },
+          "soundType": {
+            "type": "string"
+          },
+          "unlock": {
+            "type": "number"
+          },
+          "chest": {
+            "type": "string"
+          },
+          "firstOfLine": {
+            "type": "boolean"
+          },
+          "prohibited": {
+            "type": "boolean"
+          },
+          "nonCraftable": {
+            "type": "boolean"
+          },
+          "releaseAt": {
+            "type": "string"
+          },
+          "shardPrice": {
+            "type": "number"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "atk",
+          "buyAnimIdOverride",
+          "c1Qty",
+          "c1Tags",
+          "c2Qty",
+          "c2Tags",
+          "chest",
+          "combo",
+          "component1",
+          "component2",
+          "craftXp",
+          "crit",
+          "def",
+          "discount",
+          "elementAffinity",
+          "elements",
+          "eva",
+          "excl",
+          "favor",
+          "firstOfLine",
+          "hp",
+          "lTag2",
+          "lTag3",
+          "level",
+          "nonCraftable",
+          "prohibited",
+          "questAnimIdOverride",
+          "r1Qty",
+          "r2Qty",
+          "r3Qty",
+          "releaseAt",
+          "reqTags",
+          "resource1",
+          "resource2",
+          "resource3",
+          "restrict",
+          "shardPrice",
+          "skill",
+          "slotOverride",
+          "soundType",
+          "speedup",
+          "spiritAffinity",
+          "su1Cost",
+          "su2Cost",
+          "su3Cost",
+          "suggest",
+          "supgrade1",
+          "supgrade2",
+          "supgrade3",
+          "surcharge",
+          "tag",
+          "tagIndex",
+          "tier",
+          "time",
+          "tradeMinMaxValue",
+          "type",
+          "u1Req",
+          "u2Req",
+          "u3Req",
+          "u4Req",
+          "u5Req",
+          "uid",
+          "unlock",
+          "upgrade1",
+          "upgrade2",
+          "upgrade3",
+          "upgrade4",
+          "upgrade5",
+          "upgradeBonus",
+          "value",
+          "w1BuildingReq",
+          "w2BuildingReq",
+          "w3BuildingReq",
+          "worker1",
+          "worker2",
+          "worker3",
+          "xp"
+        ]
+      }
+    }
+  }
+}

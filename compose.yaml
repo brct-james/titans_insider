@@ -1,0 +1,16 @@
+version: "3.8"
+
+services:
+  db:
+    image: surrealdb/surrealdb:latest
+    restart: always
+    ports:
+      - "8001:8001"
+    volumes:
+      - db:/sdb_data
+    command: start file:sdb_data/database.db
+    env_file: surreal_secrets.env
+    user: root
+volumes:
+  db:
+    driver: local
