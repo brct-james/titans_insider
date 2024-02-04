@@ -61,81 +61,95 @@ async fn main() {
 
     tracing::debug!("--==Shopsniffer Ready==--");
 
-    tracing::debug!("--Getting Last--");
-    match item_swagger_get_slash_last_slash_all(&conf).await {
-        Ok(res) => {
-            models::item::save_item_last_response_to_db(&db, &res)
-                .await
-                .unwrap();
-        }
-        Err(err_res) => {
-            panic!("{:#?}", err_res);
-        }
-    }
-    tracing::debug!("--Finished Saving Last--");
-    tracing::debug!("--Querying Item Hist for sultandagger--");
-    match models::item::get_full_item_hist(&db, "sultandagger").await {
-        Ok(mut res) => {
-            tracing::debug!("--Found {:?} Historical Records--", res.len());
-            res.sort_by(|a, b| {
-                if a.t_type == b.t_type {
-                    a.created_at.cmp(&b.created_at)
-                } else {
-                    a.t_type.cmp(&b.t_type)
+    tracing::debug!("--Spawning Sniffer Process--");
+    let sniffer_db = db.clone();
+    let sniffer_conf = conf.clone();
+    let sniffer = tokio::task::spawn(async move {
+        let mut interval = tokio::time::interval(std::time::Duration::from_secs(30));
+        loop {
+            interval.tick().await;
+
+            tracing::debug!("--SNIFFER: Getting Items--");
+            match item_swagger_get_slash_last_slash_all(&sniffer_conf).await {
+                Ok(res) => {
+                    models::item::save_item_last_response_to_db(&sniffer_db, &res)
+                        .await
+                        .unwrap();
                 }
-            });
-            for (i, item) in res.iter().enumerate() {
-                if i % 20 == 0 {
-                    tracing::debug!("{}", "");
-                    tracing::debug!(
-                        "{:^5} | {:^7} | {:^24} | {:^19} | {:^19}",
-                        "#",
-                        "TYPE",
-                        "TIMESTAMP",
-                        "GOLD",
-                        "GEMS"
-                    );
-                    tracing::debug!(
-                        "{:^5} | {:^7} | {:^24} | {:^7} : {:^9} | {:^7} : {:^9}",
-                        "",
-                        "",
-                        "",
-                        "QTY",
-                        "BESTPRICE",
-                        "QTY",
-                        "BESTPRICE"
-                    );
-                    tracing::debug!(
-                        "{:-^5} | {:-^8}|{:-^26}|{:-^9}:{:-^11}|{:-^9}:{:-^11}",
-                        "",
-                        "",
-                        "",
-                        "",
-                        "",
-                        "",
-                        ""
-                    );
+                Err(err_res) => {
+                    panic!("{:#?}", err_res);
                 }
-                let type_string = match item.t_type.as_str() {
-                    "r" => "request",
-                    "o" => "offer",
-                    _ => "other",
-                };
-                tracing::debug!(
-                    "{:^5} | {:^7} | {:^24} | {:>7} : {:<9} | {:>7} : {:<9}",
-                    i,
-                    type_string,
-                    item.created_at,
-                    item.gold_qty,
-                    item.gold_price.unwrap_or(0.0),
-                    item.gems_qty,
-                    item.gems_price.unwrap_or(0.0)
-                );
             }
+            tracing::debug!("--SNIFFER: Finished Saving Items--");
         }
-        Err(err_res) => {
-            panic!("{:#?}", err_res);
-        }
-    }
+    });
+    tracing::debug!("--Sniffer Process Spawned Successfully--");
+    sniffer.await.unwrap();
+    tracing::debug!("--Sniffer Process Died--");
+
+    // tracing::debug!("--Querying Item Hist for sultandagger--");
+    // match models::item::get_full_item_hist(&db, "sultandagger").await {
+    //     Ok(mut res) => {
+    //         tracing::debug!("--Found {:?} Historical Records--", res.len());
+    //         res.sort_by(|a, b| {
+    //             if a.t_type == b.t_type {
+    //                 a.created_at.cmp(&b.created_at)
+    //             } else {
+    //                 a.t_type.cmp(&b.t_type)
+    //             }
+    //         });
+    //         for (i, item) in res.iter().enumerate() {
+    //             if i % 20 == 0 {
+    //                 tracing::debug!("{}", "");
+    //                 tracing::debug!(
+    //                     "{:^5} | {:^7} | {:^24} | {:^19} | {:^19}",
+    //                     "#",
+    //                     "TYPE",
+    //                     "TIMESTAMP",
+    //                     "GOLD",
+    //                     "GEMS"
+    //                 );
+    //                 tracing::debug!(
+    //                     "{:^5} | {:^7} | {:^24} | {:^7} : {:^9} | {:^7} : {:^9}",
+    //                     "",
+    //                     "",
+    //                     "",
+    //                     "QTY",
+    //                     "BESTPRICE",
+    //                     "QTY",
+    //                     "BESTPRICE"
+    //                 );
+    //                 tracing::debug!(
+    //                     "{:-^5} | {:-^8}|{:-^26}|{:-^9}:{:-^11}|{:-^9}:{:-^11}",
+    //                     "",
+    //                     "",
+    //                     "",
+    //                     "",
+    //                     "",
+    //                     "",
+    //                     ""
+    //                 );
+    //             }
+    //             let type_string = match item.t_type.as_str() {
+    //                 "r" => "request",
+    //                 "o" => "offer",
+    //                 _ => "other",
+    //             };
+    //             tracing::debug!(
+    //                 "{:^5} | {:^7} | {:^24} | {:>7} : {:<9} | {:>7} : {:<9}",
+    //                 i,
+    //                 type_string,
+    //                 item.created_at,
+    //                 item.gold_qty,
+    //                 item.gold_price.unwrap_or(0.0),
+    //                 item.gems_qty,
+    //                 item.gems_price.unwrap_or(0.0)
+    //             );
+    //         }
+    //     }
+    //     Err(err_res) => {
+    //         panic!("{:#?}", err_res);
+    //     }
+    // }
     tracing::debug!("--==Closing==--");
 }

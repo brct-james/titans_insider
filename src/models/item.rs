@@ -2,6 +2,7 @@ use serde::{Deserialize, Serialize};
 use surrealdb::Surreal;
 use surrealdb::{engine::remote::ws::Client, Error};
 
+use chrono::offset::Utc;
 use shopsniffer::models::{IBasicResponseItemLast, Item, ItemLast};
 
 #[allow(dead_code)]
@@ -13,13 +14,13 @@ pub async fn save_item_last_response_to_db(
         Some(items) => {
             let item_count = items.len();
             tracing::debug!(
-                "Started Saving All Items to DB, received {} items",
+                "SNIFFER: Started Saving All Items to DB, received {} items",
                 item_count
             );
             for (i, item_last) in items.iter().enumerate() {
-                if i % 100 == 0 {
+                if i % 500 == 0 {
                     tracing::debug!(
-                        "Now Saving Item {:>5} of {:<5} ({:.2}%)",
+                        "SNIFFER Now Saving Item {:>5} of {:<5} ({:.2}%)",
                         i,
                         item_count,
                         i as f64 / item_count as f64 * 100.0
@@ -27,7 +28,7 @@ pub async fn save_item_last_response_to_db(
                 }
                 create_item_hist_entry(db, item_last).await?;
             }
-            tracing::debug!("Finished Saving All Items to DB");
+            tracing::debug!("SNIFFER: Finished Saving All Items to DB");
             Ok(())
         }
         None => Err("No items found in response data")?,
@@ -73,6 +74,8 @@ pub struct DBItem {
     pub created_at: String,
     #[serde(rename = "updatedAt")]
     pub updated_at: String,
+    #[serde(rename = "dbTimestamp")]
+    pub db_timestamp: i64,
 }
 
 impl From<ItemLast> for DBItem {
@@ -95,6 +98,7 @@ impl From<ItemLast> for DBItem {
             request_cycle: item.request_cycle_last,
             created_at: item.created_at,
             updated_at: item.updated_at,
+            db_timestamp: Utc::now().timestamp(),
         }
     }
 }
@@ -119,6 +123,7 @@ impl From<Item> for DBItem {
             request_cycle: item.request_cycle,
             created_at: item.created_at,
             updated_at: item.updated_at,
+            db_timestamp: Utc::now().timestamp(),
         }
     }
 }
@@ -182,15 +187,14 @@ pub async fn create_item_hist_entry(
     }
 }
 
-pub async fn get_full_item_hist(db: &Surreal<Client>, item_id: &str) -> Result<Vec<Item>, Error> {
+pub async fn get_full_item_hist(db: &Surreal<Client>, item_id: &str) -> Result<Vec<DBItem>, Error> {
     let hist_res = db
         .query(format!("SELECT * FROM item_hist WHERE uid = '{item_id}'"))
         .await;
     match hist_res {
         Ok(mut res) => {
             let dbitems: Vec<DBItem> = res.take(0)?;
-            let items = dbitems.into_iter().map(|x| Into::<Item>::into(x)).collect();
-            return Ok(items);
+            return Ok(dbitems);
         }
         Err(err_res) => return Err(err_res),
     }
