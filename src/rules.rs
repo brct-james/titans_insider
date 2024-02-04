@@ -1,6 +1,8 @@
 use serde::Deserialize;
 use serde_yaml;
 
+use crate::yaml_util::YamlDeserialize;
+
 #[derive(Debug, Deserialize)]
 #[serde(untagged)]
 pub enum Rule {
@@ -14,7 +16,7 @@ pub enum Rule {
     },
 }
 
-impl super::YamlDeserialize for Vec<Rule> {
+impl YamlDeserialize for Vec<Rule> {
     fn from_yaml_file(path: &std::path::PathBuf) -> Result<Self, Box<dyn std::error::Error>> {
         let file = std::fs::File::open(path)?;
         let reader = std::io::BufReader::new(file);

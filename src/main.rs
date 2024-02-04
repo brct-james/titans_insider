@@ -1,7 +1,7 @@
+use diesel::prelude::*;
+use diesel::r2d2::ConnectionManager;
+use diesel::r2d2::Pool;
 use dotenv;
-use surrealdb::engine::remote::ws::Ws;
-use surrealdb::opt::auth::Root;
-use surrealdb::Surreal;
 
 use tracing_subscriber::{self, layer::SubscriberExt, util::SubscriberInitExt};
 
@@ -9,8 +9,20 @@ use shopsniffer::apis::configuration::Configuration;
 use shopsniffer::apis::item_api::item_swagger_get_slash_last_slash_all;
 
 mod models;
+mod rules;
+mod schema;
 mod types;
 mod yaml_util;
+
+static POLLING_RATE_SECONDS: u64 = 24;
+
+pub fn get_connection_pool(url: String) -> Pool<ConnectionManager<PgConnection>> {
+    let manager = ConnectionManager::<PgConnection>::new(url);
+    Pool::builder()
+        .test_on_check_out(true)
+        .build(manager)
+        .expect("Could not build connection pool")
+}
 
 #[tokio::main]
 async fn main() {
@@ -25,29 +37,19 @@ async fn main() {
     tracing::debug!("--Intializing Shopsniffer--");
     // Load env files
     tracing::debug!("--Loading Env Vars--");
-    dotenv::from_filename("surreal_secrets.env").ok();
-    let surreal_user = std::env::var("SURREAL_USER").expect("SURREAL_USER must be set");
-    let surreal_pass = std::env::var("SURREAL_PASS").expect("SURREAL_PASS must be set");
+    dotenv::from_filename("postgres_secrets.env").ok();
+    let postgres_user = std::env::var("POSTGRES_USER").expect("POSTGRES_USER must be set");
+    let postgres_password =
+        std::env::var("POSTGRES_PASSWORD").expect("POSTGRES_PASSWORD must be set");
+    let postgres_port = std::env::var("POSTGRES_PORT").expect("POSTGRES_PORT must be set");
+    let postgres_db = std::env::var("POSTGRES_DB").expect("POSTGRES_DB must be set");
 
     // Connect to the server
     tracing::debug!("--Connecting to DB--");
-    let db = Surreal::new::<Ws>("localhost:8001")
-        .await
-        .expect("Could not connect to DB");
-
-    // Signin as a namespace, database, or root user
-    db.signin(Root {
-        username: surreal_user.as_str(),
-        password: surreal_pass.as_str(),
-    })
-    .await
-    .expect("Could not sign in to DB");
-
-    // Select a specific namespace / database
-    db.use_ns("shopsniffer")
-        .use_db("shopsniffer")
-        .await
-        .expect("Could not select shopsniffer namespace or db");
+    let dburl = format!(
+        "postgresql://{postgres_user}:{postgres_password}@localhost:{postgres_port}/{postgres_db}"
+    );
+    let pool = get_connection_pool(dburl);
 
     tracing::debug!("--DB Connected and Ready--");
 
@@ -62,19 +64,23 @@ async fn main() {
     tracing::debug!("--==Shopsniffer Ready==--");
 
     tracing::debug!("--Spawning Sniffer Process--");
-    let sniffer_db = db.clone();
+    let sniffer_pool = pool.clone();
     let sniffer_conf = conf.clone();
     let sniffer = tokio::task::spawn(async move {
-        let mut interval = tokio::time::interval(std::time::Duration::from_secs(30));
+        let mut interval =
+            tokio::time::interval(std::time::Duration::from_secs(POLLING_RATE_SECONDS));
         loop {
             interval.tick().await;
 
             tracing::debug!("--SNIFFER: Getting Items--");
             match item_swagger_get_slash_last_slash_all(&sniffer_conf).await {
                 Ok(res) => {
-                    models::item::save_item_last_response_to_db(&sniffer_db, &res)
-                        .await
-                        .unwrap();
+                    models::item_hist::save_item_last_response_to_db(
+                        &mut sniffer_pool.get().unwrap(),
+                        &res,
+                    )
+                    .await
+                    .unwrap();
                 }
                 Err(err_res) => {
                     panic!("{:#?}", err_res);

@@ -1,2 +1,3 @@
 /target
-surreal_secrets.env
+*.env
+run.sh

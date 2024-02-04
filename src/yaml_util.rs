@@ -1,7 +1,13 @@
 use glob::glob;
 use std::collections::HashMap;
 
-use crate::models::{rules::Rule, YamlDeserialize};
+use crate::rules::Rule;
+
+pub trait YamlDeserialize {
+    fn from_yaml_file(path: &std::path::PathBuf) -> Result<Self, Box<dyn std::error::Error>>
+    where
+        Self: std::marker::Sized;
+}
 
 pub fn load_staleness_rules() -> crate::types::StalenessRules {
     tracing::debug!("Loading rules.yaml");
