@@ -30,7 +30,7 @@ Run the following command, which uses the openapi-generator-cli docker image to 
 ```bash
 docker run --rm \
   -v ${PWD}:/local openapitools/openapi-generator-cli:latest-release generate \
-  -i /local/shopsniffer/src/spec/openapi.json \
+  -i /local/titans_insider/src/spec/openapi.json \
   -g rust \
   -o /local/shopsniffer \
   --additional-properties=packageName=shopsniffer,supportAsync=true,supportMiddleware=true

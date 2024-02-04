@@ -291,7 +291,7 @@
             "$ref": "#/components/schemas/ResponseStatusMessage"
           },
           "count": {
-            "type": "number"
+            "type": "integer"
           },
           "errorMessage": {}
         },
@@ -301,13 +301,13 @@
         "type": "object",
         "properties": {
           "id": {
-            "type": "number"
+            "type": "integer"
           },
           "offerId": {
-            "type": "number"
+            "type": "integer"
           },
           "requestId": {
-            "type": "number"
+            "type": "integer"
           },
           "tType": {
             "type": "string"
@@ -328,47 +328,47 @@
             "nullable": true
           },
           "offerGoldQty": {
-            "type": "number"
+            "type": "integer"
           },
           "offerGemsQty": {
-            "type": "number"
+            "type": "integer"
           },
           "requestGoldQty": {
-            "type": "number"
+            "type": "integer"
           },
           "requestGemsQty": {
-            "type": "number"
+            "type": "integer"
           },
           "created": {
             "type": "string",
             "nullable": true
           },
           "tier": {
-            "type": "number",
+            "type": "integer",
             "nullable": true
           },
           "order": {
-            "type": "number",
+            "type": "integer",
             "nullable": true
           },
           "cityId": {
-            "type": "number",
+            "type": "integer",
             "nullable": true
           },
           "offerGoldPrice": {
-            "type": "number"
+            "type": "integer"
           },
           "offerGemsPrice": {
-            "type": "number"
+            "type": "integer"
           },
           "requestGoldPrice": {
-            "type": "number"
+            "type": "integer"
           },
           "requestGemsPrice": {
-            "type": "number"
+            "type": "integer"
           },
           "requestCycleLast": {
-            "type": "number"
+            "type": "integer"
           },
           "createdAt": {
             "type": "string"
@@ -421,7 +421,7 @@
             "$ref": "#/components/schemas/ResponseStatusMessage"
           },
           "count": {
-            "type": "number"
+            "type": "integer"
           },
           "errorMessage": {}
         },
@@ -431,7 +431,7 @@
         "type": "object",
         "properties": {
           "id": {
-            "type": "number"
+            "type": "integer"
           },
           "tType": {
             "type": "string"
@@ -452,37 +452,37 @@
             "nullable": true
           },
           "goldQty": {
-            "type": "number"
+            "type": "integer"
           },
           "gemsQty": {
-            "type": "number"
+            "type": "integer"
           },
           "created": {
             "type": "string",
             "nullable": true
           },
           "tier": {
-            "type": "number",
+            "type": "integer",
             "nullable": true
           },
           "order": {
-            "type": "number",
+            "type": "integer",
             "nullable": true
           },
           "cityId": {
-            "type": "number",
+            "type": "integer",
             "nullable": true
           },
           "goldPrice": {
-            "type": "number",
+            "type": "integer",
             "nullable": true
           },
           "gemsPrice": {
-            "type": "number",
+            "type": "integer",
             "nullable": true
           },
           "requestCycle": {
-            "type": "number"
+            "type": "integer"
           },
           "createdAt": {
             "type": "string"
@@ -545,7 +545,7 @@
             "$ref": "#/components/schemas/ResponseStatusMessage"
           },
           "count": {
-            "type": "number"
+            "type": "integer"
           },
           "errorMessage": {}
         },
@@ -561,7 +561,7 @@
             "type": "string"
           },
           "level": {
-            "type": "number"
+            "type": "integer"
           },
           "city": {
             "type": "string"
@@ -570,16 +570,16 @@
             "type": "string"
           },
           "cityLevel": {
-            "type": "number"
+            "type": "integer"
           },
           "stats": {
             "$ref": "#/components/schemas/Stats"
           },
           "rankGld": {
-            "type": "number"
+            "type": "integer"
           },
           "rankStrAdv": {
-            "type": "number"
+            "type": "integer"
           }
         },
         "additionalProperties": false,
@@ -589,28 +589,28 @@
         "type": "object",
         "properties": {
           "lvl": {
-            "type": "number"
+            "type": "integer"
           },
           "bp": {
-            "type": "number"
+            "type": "integer"
           },
           "gld": {
-            "type": "number"
+            "type": "integer"
           },
           "sll": {
-            "type": "number"
+            "type": "integer"
           },
           "buy": {
-            "type": "number"
+            "type": "integer"
           },
           "cft": {
-            "type": "number"
+            "type": "integer"
           },
           "ecft": {
-            "type": "number"
+            "type": "integer"
           },
           "qst": {
-            "type": "number"
+            "type": "integer"
           },
           "qsts": {
             "$ref": "#/components/schemas/Qsts"
@@ -619,19 +619,19 @@
             "$ref": "#/components/schemas/Boss"
           },
           "prest": {
-            "type": "number"
+            "type": "integer"
           },
           "score": {
-            "type": "number"
+            "type": "integer"
           },
           "help": {
-            "type": "number"
+            "type": "integer"
           },
           "invst": {
-            "type": "number"
+            "type": "integer"
           },
           "trd": {
-            "type": "number"
+            "type": "integer"
           },
           "clsTypLvls": {
             "$ref": "#/components/schemas/ClsTypLvls"
@@ -643,157 +643,157 @@
             "$ref": "#/components/schemas/QstLvls"
           },
           "activity": {
-            "type": "number"
+            "type": "integer"
           },
           "chests": {
             "$ref": "#/components/schemas/Chests"
           },
           "bigSale": {
-            "type": "number"
+            "type": "integer"
           },
           "tutorial": {
-            "type": "number"
+            "type": "integer"
           },
           "argon": {
-            "type": "number"
+            "type": "integer"
           },
           "sia": {
-            "type": "number"
+            "type": "integer"
           },
           "yami": {
-            "type": "number"
+            "type": "integer"
           },
           "lilu": {
-            "type": "number"
+            "type": "integer"
           },
           "rudo": {
-            "type": "number"
+            "type": "integer"
           },
           "polonia": {
-            "type": "number"
+            "type": "integer"
           },
           "donovan": {
-            "type": "number"
+            "type": "integer"
           },
           "hemma": {
-            "type": "number"
+            "type": "integer"
           },
           "hhired": {
-            "type": "number"
+            "type": "integer"
           },
           "alevel": {
-            "type": "number"
+            "type": "integer"
           },
           "whired": {
-            "type": "number"
+            "type": "integer"
           },
           "flevel": {
-            "type": "number"
+            "type": "integer"
           },
           "energy": {
-            "type": "number"
+            "type": "integer"
           },
           "dpurchased": {
-            "type": "number"
+            "type": "integer"
           },
           "cres": {
-            "type": "number"
+            "type": "integer"
           },
           "ures": {
-            "type": "number"
+            "type": "integer"
           },
           "rres": {
-            "type": "number"
+            "type": "integer"
           },
           "loot": {
-            "type": "number"
+            "type": "integer"
           },
           "bosses": {
-            "type": "number"
+            "type": "integer"
           },
           "copened": {
-            "type": "number"
+            "type": "integer"
           },
           "research": {
-            "type": "number"
+            "type": "integer"
           },
           "ascend": {
-            "type": "number"
+            "type": "integer"
           },
           "ascendUpg": {
-            "type": "number"
+            "type": "integer"
           },
           "master": {
-            "type": "number"
+            "type": "integer"
           },
           "expansions": {
-            "type": "number"
+            "type": "integer"
           },
           "bsmtExpansions": {
-            "type": "number"
+            "type": "integer"
           },
           "damage": {
-            "type": "number"
+            "type": "integer"
           },
           "jackslot": {
-            "type": "number"
+            "type": "integer"
           },
           "echt": {
-            "type": "number"
+            "type": "integer"
           },
           "echtTwin": {
-            "type": "number"
+            "type": "integer"
           },
           "echtLedg": {
-            "type": "number"
+            "type": "integer"
           },
           "tunlocked": {
-            "type": "number"
+            "type": "integer"
           },
           "bounty": {
-            "type": "number"
+            "type": "integer"
           },
           "strAdvId": {
-            "type": "number"
+            "type": "integer"
           },
           "strAdvPow": {
-            "type": "number"
+            "type": "integer"
           },
           "strAdvClass": {
             "type": "string"
           },
           "gspent": {
-            "type": "number"
+            "type": "integer"
           },
           "fuseUncommon": {
-            "type": "number"
+            "type": "integer"
           },
           "fuseFlawless": {
-            "type": "number"
+            "type": "integer"
           },
           "fuseEpic": {
-            "type": "number"
+            "type": "integer"
           },
           "fuseLegend": {
-            "type": "number"
+            "type": "integer"
           },
           "masterpiece": {
-            "type": "number"
+            "type": "integer"
           },
           "fullMoon": {
-            "type": "number"
+            "type": "integer"
           },
           "transmuter": {
-            "type": "number"
+            "type": "integer"
           },
           "lg": {
-            "type": "number"
+            "type": "integer"
           },
           "collection": {
-            "type": "number"
+            "type": "integer"
           },
           "bookEntry": {
-            "type": "number"
+            "type": "integer"
           }
         },
         "additionalProperties": false,
@@ -873,25 +873,25 @@
         "type": "object",
         "properties": {
           "forest": {
-            "type": "number"
+            "type": "integer"
           },
           "grotto": {
-            "type": "number"
+            "type": "integer"
           },
           "swamp": {
-            "type": "number"
+            "type": "integer"
           },
           "titantower": {
-            "type": "number"
+            "type": "integer"
           },
           "goldcity": {
-            "type": "number"
+            "type": "integer"
           },
           "desert": {
-            "type": "number"
+            "type": "integer"
           },
           "pyramid": {
-            "type": "number"
+            "type": "integer"
           }
         },
         "additionalProperties": false,
@@ -901,25 +901,25 @@
         "type": "object",
         "properties": {
           "forest": {
-            "type": "number"
+            "type": "integer"
           },
           "grotto": {
-            "type": "number"
+            "type": "integer"
           },
           "titantower": {
-            "type": "number"
+            "type": "integer"
           },
           "goldcity": {
-            "type": "number"
+            "type": "integer"
           },
           "swamp": {
-            "type": "number"
+            "type": "integer"
           },
           "desert": {
-            "type": "number"
+            "type": "integer"
           },
           "pyramid": {
-            "type": "number"
+            "type": "integer"
           }
         },
         "additionalProperties": false,
@@ -929,13 +929,13 @@
         "type": "object",
         "properties": {
           "Rogue": {
-            "type": "number"
+            "type": "integer"
           },
           "Spellcaster": {
-            "type": "number"
+            "type": "integer"
           },
           "Fighter": {
-            "type": "number"
+            "type": "integer"
           }
         },
         "additionalProperties": false,
@@ -945,82 +945,82 @@
         "type": "object",
         "properties": {
           "ah": {
-            "type": "number"
+            "type": "integer"
           },
           "gl": {
-            "type": "number"
+            "type": "integer"
           },
           "al": {
-            "type": "number"
+            "type": "integer"
           },
           "bl": {
-            "type": "number"
+            "type": "integer"
           },
           "wd": {
-            "type": "number"
+            "type": "integer"
           },
           "ws": {
-            "type": "number"
+            "type": "integer"
           },
           "bh": {
-            "type": "number"
+            "type": "integer"
           },
           "wm": {
-            "type": "number"
+            "type": "integer"
           },
           "wt": {
-            "type": "number"
+            "type": "integer"
           },
           "hh": {
-            "type": "number"
+            "type": "integer"
           },
           "wa": {
-            "type": "number"
+            "type": "integer"
           },
           "am": {
-            "type": "number"
+            "type": "integer"
           },
           "wb": {
-            "type": "number"
+            "type": "integer"
           },
           "xs": {
-            "type": "number"
+            "type": "integer"
           },
           "gh": {
-            "type": "number"
+            "type": "integer"
           },
           "uh": {
-            "type": "number"
+            "type": "integer"
           },
           "us": {
-            "type": "number"
+            "type": "integer"
           },
           "z": {
-            "type": "number"
+            "type": "integer"
           },
           "up": {
-            "type": "number"
+            "type": "integer"
           },
           "hm": {
-            "type": "number"
+            "type": "integer"
           },
           "hl": {
-            "type": "number"
+            "type": "integer"
           },
           "wc": {
-            "type": "number"
+            "type": "integer"
           },
           "wg": {
-            "type": "number"
+            "type": "integer"
           },
           "wp": {
-            "type": "number"
+            "type": "integer"
           },
           "xr": {
-            "type": "number"
+            "type": "integer"
           },
           "xa": {
-            "type": "number"
+            "type": "integer"
           }
         },
         "additionalProperties": false,
@@ -1057,19 +1057,19 @@
         "type": "object",
         "properties": {
           "forest": {
-            "type": "number"
+            "type": "integer"
           },
           "grotto": {
-            "type": "number"
+            "type": "integer"
           },
           "swamp": {
-            "type": "number"
+            "type": "integer"
           },
           "desert": {
-            "type": "number"
+            "type": "integer"
           },
           "pyramid": {
-            "type": "number"
+            "type": "integer"
           }
         },
         "additionalProperties": false,
@@ -1079,46 +1079,46 @@
         "type": "object",
         "properties": {
           "chest_forest": {
-            "type": "number"
+            "type": "integer"
           },
           "chest_grotto": {
-            "type": "number"
+            "type": "integer"
           },
           "chest_swamp": {
-            "type": "number"
+            "type": "integer"
           },
           "chest_desert": {
-            "type": "number"
+            "type": "integer"
           },
           "chest_pyramid": {
-            "type": "number"
+            "type": "integer"
           },
           "chest_ruins": {
-            "type": "number"
+            "type": "integer"
           },
           "chest_castle": {
-            "type": "number"
+            "type": "integer"
           },
           "chest_temple": {
-            "type": "number"
+            "type": "integer"
           },
           "chest_peak": {
-            "type": "number"
+            "type": "integer"
           },
           "chest_volcano": {
-            "type": "number"
+            "type": "integer"
           },
           "chest_rift": {
-            "type": "number"
+            "type": "integer"
           },
           "chest_goldcity": {
-            "type": "number"
+            "type": "integer"
           },
           "chest_goldcity2": {
-            "type": "number"
+            "type": "integer"
           },
           "chest_goldcity3": {
-            "type": "number"
+            "type": "integer"
           }
         },
         "additionalProperties": false,
@@ -1152,7 +1152,7 @@
             "$ref": "#/components/schemas/ResponseStatusMessage"
           },
           "count": {
-            "type": "number"
+            "type": "integer"
           },
           "errorMessage": {}
         },
@@ -1162,13 +1162,13 @@
         "type": "object",
         "properties": {
           "ticks": {
-            "type": "number"
+            "type": "integer"
           },
           "uid": {
             "type": "string"
           },
           "value": {
-            "type": "number"
+            "type": "integer"
           },
           "_id": {
             "type": "string"
@@ -1187,7 +1187,7 @@
             "$ref": "#/components/schemas/ResponseStatusMessage"
           },
           "count": {
-            "type": "number"
+            "type": "integer"
           },
           "errorMessage": {}
         },
@@ -1203,16 +1203,16 @@
             "type": "string"
           },
           "popLimit": {
-            "type": "number"
+            "type": "integer"
           },
           "netwt": {
-            "type": "number"
+            "type": "integer"
           },
           "rankNetwt": {
-            "type": "number"
+            "type": "integer"
           },
           "activity": {
-            "type": "number"
+            "type": "integer"
           },
           "quEvId": {},
           "steamChatGroupId": {},
@@ -1237,7 +1237,7 @@
           "upgrades": {
             "type": "object",
             "additionalProperties": {
-              "type": "number"
+              "type": "integer"
             }
           },
           "boosts": {
@@ -1258,50 +1258,50 @@
             "type": "string"
           },
           "level": {
-            "type": "number"
+            "type": "integer"
           },
           "rank": {
-            "type": "number"
+            "type": "integer"
           },
           "joined": {},
           "lot": {
-            "type": "number"
+            "type": "integer"
           },
           "score": {
-            "type": "number"
+            "type": "integer"
           },
           "quEvComp": {
-            "type": "number"
+            "type": "integer"
           },
           "quEvId": {
             "type": "string"
           },
           "activity": {
-            "type": "number"
+            "type": "integer"
           },
           "gld": {
-            "type": "number"
+            "type": "integer"
           },
           "invst": {
-            "type": "number"
+            "type": "integer"
           },
           "help": {
-            "type": "number"
+            "type": "integer"
           },
           "prest": {
-            "type": "number"
+            "type": "integer"
           },
           "bounty": {
-            "type": "number"
+            "type": "integer"
           },
           "master": {
-            "type": "number"
+            "type": "integer"
           },
           "ascendUpg": {
-            "type": "number"
+            "type": "integer"
           },
           "collection": {
-            "type": "number"
+            "type": "integer"
           }
         },
         "additionalProperties": false,
@@ -1333,13 +1333,13 @@
             "type": "string"
           },
           "level": {
-            "type": "number"
+            "type": "integer"
           },
           "minLevel": {
-            "type": "number"
+            "type": "integer"
           },
           "nextAt": {
-            "type": "number"
+            "type": "integer"
           }
         },
         "additionalProperties": false,
@@ -1349,10 +1349,10 @@
         "type": "object",
         "properties": {
           "join": {
-            "type": "number"
+            "type": "integer"
           },
           "minLevel": {
-            "type": "number"
+            "type": "integer"
           },
           "lang": {
             "type": "string"
@@ -1361,7 +1361,7 @@
             "type": "string"
           },
           "pickNext": {
-            "type": "number"
+            "type": "integer"
           },
           "message": {}
         },
@@ -1380,19 +1380,19 @@
             "items": {}
           },
           "currency": {
-            "type": "number"
+            "type": "integer"
           },
           "endsAt": {
-            "type": "number"
+            "type": "integer"
           },
           "nextUpdateAt": {
-            "type": "number"
+            "type": "integer"
           },
           "nextUpdateIn": {
-            "type": "number"
+            "type": "integer"
           },
           "endsIn": {
-            "type": "number"
+            "type": "integer"
           }
         },
         "additionalProperties": false,
@@ -1411,7 +1411,7 @@
             "$ref": "#/components/schemas/ResponseStatusMessage"
           },
           "count": {
-            "type": "number"
+            "type": "integer"
           },
           "errorMessage": {}
         },
@@ -1436,13 +1436,13 @@
             }
           },
           "value": {
-            "type": "number"
+            "type": "integer"
           },
           "ticks": {
-            "type": "number"
+            "type": "integer"
           },
           "level": {
-            "type": "number"
+            "type": "integer"
           }
         },
         "additionalProperties": false,
@@ -1455,10 +1455,10 @@
             "type": "string"
           },
           "value": {
-            "type": "number"
+            "type": "integer"
           },
           "ticks": {
-            "type": "number"
+            "type": "integer"
           },
           "name": {
             "type": "string"
@@ -1480,7 +1480,7 @@
             "$ref": "#/components/schemas/ResponseStatusMessage"
           },
           "count": {
-            "type": "number"
+            "type": "integer"
           },
           "errorMessage": {}
         },
@@ -1490,7 +1490,7 @@
         "type": "object",
         "properties": {
           "id": {
-            "type": "number"
+            "type": "integer"
           },
           "tType": {
             "type": "string"
@@ -1511,37 +1511,37 @@
             "nullable": true
           },
           "goldQty": {
-            "type": "number"
+            "type": "integer"
           },
           "gemsQty": {
-            "type": "number"
+            "type": "integer"
           },
           "created": {
             "type": "string",
             "nullable": true
           },
           "tier": {
-            "type": "number",
+            "type": "integer",
             "nullable": true
           },
           "order": {
-            "type": "number",
+            "type": "integer",
             "nullable": true
           },
           "cityId": {
-            "type": "number",
+            "type": "integer",
             "nullable": true
           },
           "goldPrice": {
-            "type": "number",
+            "type": "integer",
             "nullable": true
           },
           "gemsPrice": {
-            "type": "number",
+            "type": "integer",
             "nullable": true
           },
           "requestCycleLast": {
-            "type": "number"
+            "type": "integer"
           },
           "createdAt": {
             "type": "string"
@@ -1578,37 +1578,37 @@
             "type": "string"
           },
           "level": {
-            "type": "number"
+            "type": "integer"
           },
           "type": {
             "type": "string"
           },
           "xp": {
-            "type": "number"
+            "type": "integer"
           },
           "craftXp": {
-            "type": "number"
+            "type": "integer"
           },
           "value": {
-            "type": "number"
+            "type": "integer"
           },
           "tradeMinMaxValue": {
             "type": "string"
           },
           "favor": {
-            "type": "number"
+            "type": "integer"
           },
           "time": {
-            "type": "number"
+            "type": "integer"
           },
           "atk": {
-            "type": "number"
+            "type": "integer"
           },
           "def": {
-            "type": "number"
+            "type": "integer"
           },
           "hp": {
-            "type": "number"
+            "type": "integer"
           },
           "eva": {
             "type": "string"
@@ -1620,11 +1620,11 @@
             "type": "string"
           },
           "tier": {
-            "type": "number",
+            "type": "integer",
             "nullable": true
           },
           "combo": {
-            "type": "number"
+            "type": "integer"
           },
           "worker1": {
             "type": "string"
@@ -1636,37 +1636,37 @@
             "type": "string"
           },
           "w1BuildingReq": {
-            "type": "number"
+            "type": "integer"
           },
           "w2BuildingReq": {
-            "type": "number"
+            "type": "integer"
           },
           "w3BuildingReq": {
-            "type": "number"
+            "type": "integer"
           },
           "resource1": {
             "type": "string"
           },
           "r1Qty": {
-            "type": "number"
+            "type": "integer"
           },
           "resource2": {
             "type": "string"
           },
           "r2Qty": {
-            "type": "number"
+            "type": "integer"
           },
           "resource3": {
             "type": "string"
           },
           "r3Qty": {
-            "type": "number"
+            "type": "integer"
           },
           "component1": {
             "type": "string"
           },
           "c1Qty": {
-            "type": "number"
+            "type": "integer"
           },
           "c1Tags": {
             "type": "string"
@@ -1675,25 +1675,25 @@
             "type": "string"
           },
           "c2Qty": {
-            "type": "number"
+            "type": "integer"
           },
           "c2Tags": {
             "type": "string"
           },
           "u1Req": {
-            "type": "number"
+            "type": "integer"
           },
           "u2Req": {
-            "type": "number"
+            "type": "integer"
           },
           "u3Req": {
-            "type": "number"
+            "type": "integer"
           },
           "u4Req": {
-            "type": "number"
+            "type": "integer"
           },
           "u5Req": {
-            "type": "number"
+            "type": "integer"
           },
           "upgrade1": {
             "type": "string"
@@ -1711,7 +1711,7 @@
             "type": "string"
           },
           "upgradeBonus": {
-            "type": "number"
+            "type": "integer"
           },
           "supgrade1": {
             "type": "string"
@@ -1723,13 +1723,13 @@
             "type": "string"
           },
           "su1Cost": {
-            "type": "number"
+            "type": "integer"
           },
           "su2Cost": {
-            "type": "number"
+            "type": "integer"
           },
           "su3Cost": {
-            "type": "number"
+            "type": "integer"
           },
           "restrict": {
             "nullable": true
@@ -1738,7 +1738,7 @@
             "nullable": true
           },
           "tagIndex": {
-            "type": "number"
+            "type": "integer"
           },
           "elements": {
             "type": "string"
@@ -1762,22 +1762,22 @@
             "type": "string"
           },
           "discount": {
-            "type": "number"
+            "type": "integer"
           },
           "surcharge": {
-            "type": "number"
+            "type": "integer"
           },
           "suggest": {
-            "type": "number"
+            "type": "integer"
           },
           "speedup": {
-            "type": "number"
+            "type": "integer"
           },
           "buyAnimIdOverride": {
-            "type": "number"
+            "type": "integer"
           },
           "questAnimIdOverride": {
-            "type": "number"
+            "type": "integer"
           },
           "slotOverride": {
             "type": "string"
@@ -1786,7 +1786,7 @@
             "type": "string"
           },
           "unlock": {
-            "type": "number"
+            "type": "integer"
           },
           "chest": {
             "type": "string"
@@ -1804,7 +1804,7 @@
             "type": "string"
           },
           "shardPrice": {
-            "type": "number"
+            "type": "integer"
           }
         },
         "additionalProperties": false,
