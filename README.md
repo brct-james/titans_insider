@@ -5,9 +5,15 @@
 1. ~~Connect to smarty titans api and save to database~~
 2. ~~Convert from surreal to postgres using diesel~~
 3. Create process for archiving data to conserve storage space (currently estimating +1gb every ~40 hours) (probably store daily average/high/low price, and similar for qty), consider only storing a subset of the smarty titans cols
-4. Start using the historical endpoint to build back history into the past (may need to pass connect.sid cookie as part of request, which is currently valid for 14 days, to get historic data older than 2 days)
-5. Develop custom metrics
-6. Create web UI @ titans.brct.io, develop alerts (discord, web, etc.)
+4. Use item and translation info to make data more user friendly
+5. Start using the historical endpoint to build back history into the past (may need to pass connect.sid cookie as part of request, which is currently valid for 14 days, to get historic data older than 2 days) - ideally 60 months of data would be great
+6. Develop custom metrics (best time to buy and sell flawless T13, month-long arbitrage opportunities, etc.)
+
+### Uncommitted
+
+- Add event timing to DB and custom metrics (best items to sell and when best to sell specifically near dragon event for example)
+- Create web UI @ titans.brct.io
+- Develop triggers/alerts (discord, web, etc.)
 
 ## Dev Setup
 
@@ -65,6 +71,10 @@ If diesel is really borked, try:
 If you need to take the database down for some reason:
 
 - `down.sh`
+
+To check size of database:
+
+- `SELECT pg_size_pretty(pg_database_size('shopsniffer'))`
 
 ## Config Notes
 
